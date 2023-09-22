@@ -1,5 +1,16 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 
+
+const room = new Map();
+room.set("e320", {
+  id: "320",
+  title: "多媒體教室",
+});
+room.set("e319", {
+  id: "319",
+  title: "嵌入式實驗室",
+});
+
 const router = new Router();
 router
   .get("/", (context) => {
@@ -22,6 +33,11 @@ router
       </body>
     </html>
     `);
+  })
+  .get("/room/:id", (context) => {
+    if (context.params && context.params.id && room.has(context.params.id)) {
+      context.response.body = room.get(context.params.id);
+    }
   })
   .get("/to/nqu", (context) => {
     context.response.redirect('https://www.nqu.edu.tw/')
