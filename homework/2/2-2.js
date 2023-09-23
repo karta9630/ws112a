@@ -69,14 +69,14 @@ export function list(posts) {
     list.push(`
     <li>
       <h2>${ post.title }</h2>
-      <p><a href="/post/${post.id}">Read post</a></p>
+      <p><a href="/post/${post.id}">查看聯絡人</a></p>
     </li>
     `)
   }
   let content = `
-  <h1>Posts</h1>
-  <p>You have <strong>${posts.length}</strong> posts!</p>
-  <p><a href="/post/new">Create a Post</a></p>
+  <h1>聯絡人</h1>
+  <p>你有 <strong>${posts.length}</strong> 位聯絡人</p>
+  <p><a href="/post/new">新增聯絡人</a></p>
   <ul id="posts">
     ${list.join('\n')}
   </ul>
@@ -86,12 +86,12 @@ export function list(posts) {
 
 export function newPost() {
   return layout('New Post', `
-  <h1>New Post</h1>
-  <p>Create a new post.</p>
+  <h1>新增  </h1>
+  <p>新增聯絡人</p>
   <form action="/post" method="post">
-    <p><input type="text" placeholder="Title" name="title"></p>
-    <p><textarea placeholder="Contents" name="body"></textarea></p>
-    <p><input type="submit" value="Create"></p>
+    <p><input type="text" placeholder="姓名" name="title"></p>
+    <p><textarea placeholder="電話" name="body"></textarea></p>
+    <p><input type="submit" value="新增"></p>
   </form>
   `)
 }
