@@ -52,13 +52,12 @@ router
       console.log('params=', params)
       let name = params['name']
       let tel = params['tel']
+      ctx.response.type = 'text/html'
       console.log(`name=${name} tel=${tel}`)
-      if (peoples.get(name)) {
-        ctx.response.body = ({'error':`name=${name} 帳號已被別人使用過 `})        
+      if (peoples.get(name)&&tel==peoples.get(tel).tel) {
+        ctx.response.body = `<p>登入成功</p>`        
       } else {
-        peoples.set(name, {name, tel})
-        ctx.response.type = 'text/html'
-        ctx.response.body = `<p>新增 (${name}, ${tel})註冊成功</p></p><p><a href="/public/">通訊管理系統</a></p>`
+        ctx.response.body = `<p>登入失敗</p><p><a href="http://127.0.0.1:8000/public/find.html">重新登入</a></p>`
       }
   
     }

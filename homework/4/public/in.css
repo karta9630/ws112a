@@ -1,0 +1,36 @@
+/* 基本頁面樣式 */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+/* 標題樣式 */
+h1 {
+  font-size: 36px;
+  color: #333;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* 項目清單樣式 */
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+/* 鏈接樣式 */
+a {
+  text-decoration: none;
+  color: #0077b6;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
