@@ -42,7 +42,6 @@ async function show(ctx) {
   if (!post) ctx.throw(404, 'invalid post id');
   ctx.response.body = await render.show(post);
 }
-
 async function create(ctx) {
   const body = ctx.request.body()
   if (body.type === "form") {
