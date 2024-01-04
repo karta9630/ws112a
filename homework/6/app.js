@@ -1,5 +1,7 @@
+// app.js
+
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
-import * as render from './render.js'
+import * as render from './render.js';
 import { DB } from "https://deno.land/x/sqlite/mod.ts";
 import { Session } from "https://deno.land/x/oak_sessions/mod.ts";
 
@@ -17,10 +19,10 @@ router.get('/', list)
   .get('/logout', logout)
   .get('/post/new', add)
   .get('/post/:id', show)
-  .post('/post', create)
+  .post('/post', create);
 
-const app = new Application()
-app.use(Session.initMiddleware())
+const app = new Application();
+app.use(Session.initMiddleware());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
