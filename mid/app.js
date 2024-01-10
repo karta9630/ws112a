@@ -22,7 +22,6 @@ router
   .get('/post/:id', show)
   .post('/post', create)
   .get('/post/delete/:id', deletePost)
-  .post('/post/delete/:id', del);
 
   
 const app = new Application();
@@ -159,24 +158,14 @@ async function create(ctx) {
   }
 }
 async function deletePost(ctx) {
-    const user = await ctx.state.session.get('user');
-    if (!user) {
-      ctx.response.redirect('/login');
-      return;
-    }
-  
-    const postId = ctx.params.id;
-    const post = postQuery(`SELECT id, username, title, body FROM posts WHERE id=${postId}`);
-    ctx.response.body = await render.deletePost(post);
-    sqlcmd("DELETE FROM posts WHERE id=?", [postId]);
-    ctx.response.redirect('/');
-  }
-  async function del(ctx) {
     const pid = ctx.params.id;
+    const post = postQuery('SELECT id, username, title, body FROM posts WHERE id = ?', [pid]);
+    const user = await ctx.state.session.get('user');
+
     sqlcmd("DELETE FROM posts WHERE id=?", [pid]);
-  
     ctx.response.redirect('/');
   }
+
 
   
 

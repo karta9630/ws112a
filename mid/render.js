@@ -172,7 +172,7 @@ export function layout(title, content) {
   }
   
   
-  export function deleteConfirmation(post) {
+  export function deleteConfirmation() {
     return layout('Confirm Deletion', `
       <form action="/post/delete/${post.id}" method="post">
       </form>
@@ -182,7 +182,6 @@ export function layout(title, content) {
     return layout(post.title, `
       <h1>${post.title}</h1>
       <p>${post.body}</p>
-      <p>${deleteLink}</p>
     `);
   } 
   
